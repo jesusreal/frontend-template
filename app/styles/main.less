@@ -1,0 +1,214 @@
+/* VARIABLES */
+
+@green: #3c9700;
+@orange: #ff8800;
+@light-gray: #ccc;
+@background-gray: #eee;
+@green-gradient-1: #66b100; 
+@green-gradient-2: #338800;
+@green-gradient-3: #56a100;
+@orange-gradient-1: #ff8800; 
+@orange-gradient-2: #dd7700;
+@orange-gradient-3: #fd8600;
+@gray-gradient-1: #e6e6e6; 
+@gray-gradient-2: #ccc;
+@gray-gradient-3: #aaa;
+
+
+/* MIXINS */
+
+.button-settings (@width; @color) {
+	width: @width;
+	@color1 :"@{color}-gradient-1";
+	@color2 :"@{color}-gradient-2";
+	@color3 :"@{color}-gradient-3";
+	background: linear-gradient(@@color1, @@color2, @@color3);
+}
+
+
+/* RESET STYLES */
+
+* {
+  box-sizing: border-box;
+} 
+a, a:hover {
+  text-decoration: none;
+  color: black;
+}
+input {
+  border: 1px black solid;
+  border-radius: 10px;
+  width: 50%; 
+  padding: 0px 2%;
+}
+strong {
+  display: block;
+  font-size: 2em;
+}
+p {
+  margin-bottom: 0px;
+}
+
+
+/* COMMON STYLES */
+.font-size-1_5x {
+  font-size: 1.5em;
+}
+
+#content button {
+	padding: 10px 0px;
+	margin: 20px 0px;
+	border-radius: 20px;
+	color: white;
+	border-top: none;
+	border-left: none;
+	&#sign-in {
+		 .button-settings(20%; gray);
+	}
+	&#register {
+		.button-settings(30%; orange);
+	}
+	&#proceed-without-registering {
+		.button-settings(55%; green);
+	}
+}
+
+
+/* CONTAINERS */
+
+.row {
+  margin: 0%;
+}
+
+.bar {
+	background-color: @green;
+	width: 100%;
+	padding: 10px 0px;
+	margin: 0px;
+	#menu {
+		li a {
+			font-size: 2rem;
+		}
+		.glyphicon {
+			display: none;
+		}
+	}
+	footer & {
+		li a {
+			font-size: 1.5rem;   
+		}
+	}
+	ul {
+		font-size: 0px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	li {
+		display: inline-block;
+		width: 33.3%;
+		a {
+			display: inline-block;
+			width: 100%;
+			color: white;
+			padding: 0px 10px;
+		}
+		&:nth-child(2), &:nth-child(5), &:nth-child(8) {
+			a {
+				border-left: 2px solid white;
+				border-right: 2px solid white;
+			}  
+		}
+	}
+}
+
+#content {
+	width: 90%;
+	margin: 0 auto;
+	&>div {
+		margin-bottom: 10px;
+		&:first-child {
+  			margin-top: 10px;
+		}	
+	}
+}
+
+#left-side {
+	border-top: 2px solid @light-gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	a {
+		text-decoration: underline;
+		color: @green;
+		display: block;
+		margin: 10px 0;
+	}
+}
+
+#right-side>div {
+	&:extend(#left-side);
+	background-color: @background-gray;
+	&:first-child {
+		margin-bottom: 20px;
+	}
+}
+
+
+/* MENU */
+
+#menu-button {
+	font-size: 1.5em;
+	float: right;
+	margin-right: 6%;
+	background: transparent;
+	border: none;
+	.glyphicon {
+		transition: transform 0.5s;
+	}
+	&.active {
+		margin-bottom: 10px;
+		.glyphicon {
+	  		color: white;
+			transform: rotate(90deg);
+		}
+	}
+
+}
+
+#menu {
+	clear: both;
+	display: none;
+	&.active {
+		display: block;
+	}
+}
+
+
+/* LEFT SIDE CONTENT */
+
+#sign-in-form * {
+  	display: block;
+	label {
+		margin-top: 10px;
+	}
+}
+
+#load-json {
+  text-align: right;
+}
+
+
+/* RIGHT SIDE CONTENT */
+
+.glyphicon-ok {
+  color: @green;
+}
+
+
+/* FOOTER */
+
+footer {
+	margin-top: 20px;
+	&>p {
+		font-size: 1em;   
+	}
+}
